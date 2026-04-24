@@ -1,0 +1,109 @@
+.leaflet-control-layers-toggle.leaflet-layerstree-named-toggle {
+    margin: 2px 5px;
+    width: auto;
+    height: auto;
+    background-image: none;
+}
+
+.leaflet-control-layers-list{
+	font: 13px / 1.7 "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.leaflet-layerstree-node {
+}
+
+.leaflet-layerstree-header input{
+    margin-left: 0px;
+}
+
+
+.leaflet-layerstree-header {
+}
+
+.leaflet-layerstree-header-pointer {
+    cursor: pointer;
+}
+
+.leaflet-layerstree-header label {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.leaflet-layerstree-header-label {
+}
+
+.leaflet-layerstree-header-name {
+	padding-left: 2px;
+}
+
+.leaflet-layerstree-header-space {
+}
+
+.leaflet-layerstree-children {
+    padding-left: 20px;
+}
+
+.leaflet-layerstree-children-nopad {
+    padding-left: 0px;
+}
+
+.leaflet-layerstree-closed {
+}
+
+.leaflet-layerstree-opened {
+}
+
+.leaflet-layerstree-hide {
+    display: none;
+}
+
+.leaflet-layerstree-nevershow {
+    display: none;
+}
+
+.leaflet-layerstree-expand-collapse {
+    cursor: pointer;
+}
+.leaflet-control-layers {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  max-height: 320px;
+  overflow-y: auto;
+  backdrop-filter: blur(6px);
+  border: 1px solid #e5e7eb;
+}
+
+/* títulos de grupo */
+.leaflet-layerstree-header-label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #1f2937;
+}
+
+/* items de capa */
+.leaflet-layerstree-header {
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+/* hover limpio */
+.leaflet-layerstree-header:hover {
+  background: #f3f4f6;
+}
+
+/* checkboxes alineados */
+.leaflet-layerstree-header input {
+  transform: scale(1.05);
+  margin-right: 6px;
+}
+
+/* texto */
+.leaflet-layerstree-header-name {
+  font-size: 13px;
+}
+.leaflet-control-layers:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
