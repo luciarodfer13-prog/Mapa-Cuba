@@ -24,8 +24,9 @@
 /* BARRA SUPERIOR */
 .topbar {
   height: 50px;
-  background: linear-gradient(90deg, #1f2937, #111827);
-  color: white;
+  background: linear-gradient(90deg, #14b8a6, #0d9488);
+  color:#ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   padding: 0 15px;
@@ -45,7 +46,18 @@
   width: 100%;
   height: 100%;
 }
-
+.label-ciudad {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #222;
+}
+.label-Con_local {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #222;
+}
         </style>
         <title></title>
     </head>
@@ -311,14 +323,24 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Capa_base_2);
         map.addLayer(layer_Capa_base_2);
         function pop_Flujos_ind_3(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Tipo'] !== null ? autolinker.link(String(feature.properties['Tipo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+            var popupContent = '<table style="border-collapse: collapse;">\
+    <tr>\
+        <td><b>Tipo</b></td>\
+        <td>' + (feature.properties['Tipo'] !== null ? feature.properties['Tipo'] : '') + '</td>\
+    </tr>\
+</table>\
+    \
+    <div style="font-weight:bold; text-align:center;">Máquina de Vapor</div>\
+    <img src="images/vapor.jpg" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+    <div style="font-weight:bold; text-align:center;">Evaporador al Vacío</div>\
+    <img src="images/evaporador.jpg" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+    <div style="font-weight:bold; text-align:center;">Centrífuga</div>\
+    <img src="images/centrifuga.jpg" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+</div>';
+
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -354,14 +376,20 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Flujos_ind_3);
         map.addLayer(layer_Flujos_ind_3);
         function pop_Flujos_bio_4(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Tipo'] !== null ? autolinker.link(String(feature.properties['Tipo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+            var popupContent = '<table style="border-collapse: collapse;">\
+    <tr>\
+        <td><b>Tipo</b></td>\
+        <td>' + (feature.properties['Tipo'] !== null ? feature.properties['Tipo'] : '') + '</td>\
+    </tr>\
+</table>\
+    \
+    <div style="font-weight:bold; text-align:center;">Caña Criolla</div>\
+    <img src="images/caña_criolla.jpg" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+   <div style="font-weight:bold; text-align:center;">Caña Otahiti</div>\
+   <img src="images/caña_otahiti.webp" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+</div>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -397,14 +425,12 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Flujos_bio_4);
         map.addLayer(layer_Flujos_bio_4);
         function pop_Flujos_con_5(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Tipo'] !== null ? autolinker.link(String(feature.properties['Tipo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+            var popupContent = '<table style="border-collapse: collapse;">\
+    <tr>\
+        <td><b>Tipo</b></td>\
+        <td>' + (feature.properties['Tipo'] !== null ? feature.properties['Tipo'] : '') + '</td>\
+    </tr>\
+</table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -442,12 +468,18 @@ window.addEventListener("resize", fixMap);
         function pop_Con_local_6(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
+                        <td><b>Tipo:</b></td>\
                         <td colspan="2">' + (feature.properties['Tipo'] !== null ? autolinker.link(String(feature.properties['Tipo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
-                </table>';
+                </table>\
+    \
+    <div style="font-weight:bold; text-align:center;">Sociedad de Amigos del País de La Habana</div>\
+    <img src="images/soc_am.webp" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+    <div style="font-weight:bold; text-align:center;">Jardín Botánico de La Habana</div>\
+    <img src="images/jardin_bot.webp" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+</div>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -480,7 +512,20 @@ window.addEventListener("resize", fixMap);
             dataVar: 'json_Con_local_6',
             layerName: 'layer_Con_local_6',
             pane: 'pane_Con_local_6',
-            onEachFeature: pop_Con_local_6,
+            onEachFeature: function (feature, layer) {
+
+    pop_Con_local_6(feature, layer);
+
+    if (feature.properties['Tipo']) {
+        layer.bindTooltip(feature.properties['Tipo'], {
+            permanent: true,
+            direction: "top",
+            offset: [0, -8],
+            className: "label-Con_local"
+        });
+    }
+
+},
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
@@ -492,23 +537,31 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Con_local_6);
         map.addLayer(layer_Con_local_6);
         function pop_Sup_Libre_7(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Jur'] !== null ? autolinker.link(String(feature.properties['Jur']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Sup. Libre'] !== null ? autolinker.link(String(feature.properties['Sup. Libre']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Total Sup.'] !== null ? autolinker.link(String(feature.properties['Total Sup.']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['pct_Lib'] !== null ? autolinker.link(String(feature.properties['pct_Lib']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+           var popupContent = '\
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 13px;">\
+    <table style="border-collapse: collapse;">\
+    <tr>\
+        <td><b>Jurisdicción:</b></td>\
+        <td>' + (feature.properties['Jur'] !== null ? feature.properties['Jur'] : '') + '</td>\
+    </tr>\
+    <tr>\
+        <td><b>Superficie Libre:</b></td>\
+        <td>' + (feature.properties['Sup. Libre'] !== null ? feature.properties['Sup. Libre'] : '') + '</td>\
+    </tr>\
+    <tr>\
+        <td><b>Superficie Total:</b></td>\
+        <td>' + (feature.properties['Total Sup.'] !== null ? feature.properties['Total Sup.'] : '') + '</td>\
+    </tr>\
+    <tr>\
+        <td><b>% Libre:</b></td>\
+        <td>' + (feature.properties['pct_Lib'] !== null ? feature.properties['pct_Lib'] : '') + '</td>\
+    </tr>\
+</table>\
+    \
+    <div style="font-weight:bold; text-align:center;">Tipos de Tierra</div>\
+    <img src="images/tipos_tierra.jpg" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+</div>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -608,23 +661,31 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Sup_Libre_7);
         map.addLayer(layer_Sup_Libre_7);
         function pop_Sup_Cultivada_8(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Jur'] !== null ? autolinker.link(String(feature.properties['Jur']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Total Sup.'] !== null ? autolinker.link(String(feature.properties['Total Sup.']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Sup_Cult'] !== null ? autolinker.link(String(feature.properties['Sup_Cult']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['pct_cult'] !== null ? autolinker.link(String(feature.properties['pct_cult']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+           var popupContent = '\
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 13px;">\
+    <table style="border-collapse: collapse;">\
+    <tr>\
+        <td><b>Jurisdicción:</b></td>\
+        <td>' + (feature.properties['Jur'] !== null ? feature.properties['Jur'] : '') + '</td>\
+    </tr>\
+    <tr>\
+        <td><b>Superficie Total:</b></td>\
+        <td>' + (feature.properties['Total Sup.'] !== null ? feature.properties['Total Sup.'] : '') + '</td>\
+    </tr>\
+    <tr>\
+        <td><b>Superficie Cultivada:</b></td>\
+        <td>' + (feature.properties['Sup_Cult'] !== null ? feature.properties['Sup_Cult'] : '') + '</td>\
+    </tr>\
+    <tr>\
+        <td><b>% Cultivado:</b></td>\
+        <td>' + (feature.properties['pct_cult'] !== null ? feature.properties['pct_cult'] : '') + '</td>\
+    </tr>\
+</table>\
+    \
+    <div style="font-weight:bold; text-align:center;">Tipos de Tierra</div>\
+    <img src="images/tipos_tierra.jpg" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+</div>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -724,11 +785,14 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Sup_Cultivada_8);
         map.addLayer(layer_Sup_Cultivada_8);
         function pop_Ferro_lineas_9(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+            var popupContent = '\
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 13px;">\
+    <table style="border-collapse: collapse;">\
+    <tr>\
+        <td><b>ID:</b></td>\
+        <td>' + (feature.properties['ID'] !== null ? feature.properties['id'] : '') + '</td>\
+    </tr>\
+</table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -764,11 +828,14 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Ferro_lineas_9);
         map.addLayer(layer_Ferro_lineas_9);
         function pop_Ferro_proyectos_10(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+           var popupContent = '\
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 13px;">\
+    <table style="border-collapse: collapse;">\
+    <tr>\
+        <td><b>ID:</b></td>\
+        <td>' + (feature.properties['id'] !== null ? feature.properties['id'] : '') + '</td>\
+    </tr>\
+</table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -804,11 +871,14 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Ferro_proyectos_10);
         map.addLayer(layer_Ferro_proyectos_10);
         function pop_Caminos_11(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+            var popupContent = '\
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 13px;">\
+    <table style="border-collapse: collapse;">\
+    <tr>\
+        <td><b>ID:</b></td>\
+        <td>' + (feature.properties['id'] !== null ? feature.properties['id'] : '') + '</td>\
+    </tr>\
+</table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -844,14 +914,14 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Caminos_11);
         map.addLayer(layer_Caminos_11);
         function pop_Puertos_12(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Puertos'] !== null ? autolinker.link(String(feature.properties['Puertos']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+            var popupContent = '\
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 13px;">\
+    <table style="border-collapse: collapse;">\
+    <tr>\
+        <td><b>Puerto:</b></td>\
+        <td>' + (feature.properties['Puertos'] !== null ? feature.properties['Puertos'] : '') + '</td>\
+    </tr>\
+</table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -892,17 +962,23 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Puertos_12);
         map.addLayer(layer_Puertos_12);
         function pop_Paraderos_13(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Paraderos'] !== null ? autolinker.link(String(feature.properties['Paraderos']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Número'] !== null ? autolinker.link(String(feature.properties['Número']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+            var popupContent = '\
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 13px;">\
+    <table style="border-collapse: collapse;">\
+        <tr>\
+            <td><b>Paradero:</b></td>\
+            <td>' + (feature.properties['Paraderos'] !== null ? autolinker.link(String(feature.properties['Paraderos']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+        </tr>\
+        <tr>\
+            <td><b>Ingenios que lo utilizaban:</b></td>\
+            <td>' + (feature.properties['Número'] !== null ? autolinker.link(String(feature.properties['Número']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+        </tr>\
+    </table>\
+    \
+    <div style="font-weight:bold; text-align:center;">Ferrocarril</div>\
+    <img src="images/ferrocarril.webp" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+</div>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -993,17 +1069,23 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Paraderos_13);
         map.addLayer(layer_Paraderos_13);
         function pop_Embarcaderos_14(feature, layer) {
-            var popupContent = '<table>\
+            var popupContent = '\
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 13px;">\
+<table style="border-collapse: collapse;">\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td><b>Embarcadero:</b></td>\
+                        <td>' + (feature.properties['Emb'] !== null ? autolinker.link(String(feature.properties['Emb']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Emb'] !== null ? autolinker.link(String(feature.properties['Emb']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td><b>Ingenios que lo utilizaban:</b></td>\
+                        <td>' + (feature.properties['Número'] !== null ? autolinker.link(String(feature.properties['Número']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Número'] !== null ? autolinker.link(String(feature.properties['Número']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+                </table>\
+    \
+    <div style="font-weight:bold; text-align:center;">Barco de Vapor</div>\
+    <img src="images/barco_vapor.webp" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+</div>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -1094,24 +1176,12 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Embarcaderos_14);
         map.addLayer(layer_Embarcaderos_14);
         function pop_Ciudades_15(feature, layer) {
-            var popupContent = '<table>\
+            var popupContent = '\
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 13px;">\
+<table style="border-collapse: collapse;">\
                     <tr>\
-                        <td class="visible-with-data" id="id" colspan="2"><strong>id</strong><br />' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Nombre_'] !== null ? autolinker.link(String(feature.properties['Nombre_']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['1'] !== null ? autolinker.link(String(feature.properties['1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['0'] !== null ? autolinker.link(String(feature.properties['0']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['2'] !== null ? autolinker.link(String(feature.properties['2']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['3'] !== null ? autolinker.link(String(feature.properties['3']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td><b>Nombre:</b></td>\
+                        <td>' + (feature.properties['Nombre_'] !== null ? autolinker.link(String(feature.properties['Nombre_']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -1146,7 +1216,20 @@ window.addEventListener("resize", fixMap);
             dataVar: 'json_Ciudades_15',
             layerName: 'layer_Ciudades_15',
             pane: 'pane_Ciudades_15',
-            onEachFeature: pop_Ciudades_15,
+            onEachFeature: function (feature, layer) {
+
+    pop_Ciudades_15(feature, layer);
+
+    if (feature.properties['Nombre_']) {
+        layer.bindTooltip(feature.properties['Nombre_'], {
+            permanent: true,
+            direction: "top",
+            offset: [0, -8],
+            className: "label-ciudad"
+        });
+    }
+
+},
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
@@ -1158,9 +1241,12 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Ciudades_15);
         map.addLayer(layer_Ciudades_15);
         function pop_Divisiones_adm_16(feature, layer) {
-            var popupContent = '<table>\
+            var popupContent = '\
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 13px;">\
+<table style="border-collapse: collapse;">\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td><b>ID:</b></td>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -1198,32 +1284,48 @@ window.addEventListener("resize", fixMap);
         bounds_group.addLayer(layer_Divisiones_adm_16);
         map.addLayer(layer_Divisiones_adm_16);
         function pop_Nivel_industria_17(feature, layer) {
-            var popupContent = '<table>\
+            var popupContent = '\
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 13px;">\
+<table style="border-collapse: collapse;">\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td><b>Jurisdicción:</b></td>\
+                        <td>' + (feature.properties['Nombre_'] !== null ? autolinker.link(String(feature.properties['Nombre_']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Nombre_'] !== null ? autolinker.link(String(feature.properties['Nombre_']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td><b>Tradicional:</b></td>\
+                        <td>' + (feature.properties['0'] !== null ? autolinker.link(String(feature.properties['0']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td class="visible-with-data" id="1" colspan="2"><strong>1</strong><br />' + (feature.properties['1'] !== null ? autolinker.link(String(feature.properties['1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td><b>Semimecanizado:</b></td>\
+                        <td>' + (feature.properties['1'] !== null ? autolinker.link(String(feature.properties['1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td class="visible-with-data" id="0" colspan="2"><strong>0</strong><br />' + (feature.properties['0'] !== null ? autolinker.link(String(feature.properties['0']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td><b>Mecanizado:</b></td>\
+                        <td>' + (feature.properties['2'] !== null ? autolinker.link(String(feature.properties['2']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td class="visible-with-data" id="2" colspan="2"><strong>2</strong><br />' + (feature.properties['2'] !== null ? autolinker.link(String(feature.properties['2']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td><b>Mecanizado + Centrífuga:</b></td>\
+                        <td>' + (feature.properties['3'] !== null ? autolinker.link(String(feature.properties['3']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td class="visible-with-data" id="3" colspan="2"><strong>3</strong><br />' + (feature.properties['3'] !== null ? autolinker.link(String(feature.properties['3']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td><b>Total:</b></td>\
+                        <td>' + (feature.properties['Total'] !== null ? autolinker.link(String(feature.properties['Total']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Total'] !== null ? autolinker.link(String(feature.properties['Total']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td><b>% Industrialización:</b></td>\
+                        <td>' + (feature.properties['Indice_ind'] !== null ? autolinker.link(String(feature.properties['Indice_ind']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Indice_ind'] !== null ? autolinker.link(String(feature.properties['Indice_ind']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+                </table>\
+    \
+    <div style="font-weight:bold; text-align:center;">Trapiche de Sangre</div>\
+    <img src="images/trapiche_sangre.jpg" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+    <div style="font-weight:bold; text-align:center;">Trapiche de Vapor</div>\
+    <img src="images/maquina_vapor.jpg" \
+         style="width:100%; max-width:220px; margin-top:8px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">\
+    <div style="margin-top:12px;">\
+    <a href="https://skfb.ly/6oBPC" target="_blank">Tren Jamaiquino</a\
+</div>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
@@ -1341,7 +1443,7 @@ window.addEventListener("resize", fixMap);
         {label: '<b>Capa_geo</b>',  selectAllCheckbox: true, children: [
             {label: '<img src="legend/Capa_base_2.png" /> Capa_base', layer: layer_Capa_base_2},
             {label: "Relieve", layer: layer_Relieve_1},
-            {label: 'Ríos<br /><table><tr><td style="text-align: center;"><img src="legend/Ros_0_NonPerennialIntermittentFluctuating0.png" /></td><td>Non-Perennial/Intermittent/Fluctuating</td></tr><tr><td style="text-align: center;"><img src="legend/Ros_0_PerennialPermanent1.png" /></td><td>Perennial/Permanent</td></tr><tr><td style="text-align: center;"><img src="legend/Ros_0_2.png" /></td><td></td></tr></table>', layer: layer_Ros_0},]},]
+            {label: 'Ríos<br /><table><tr><td style="text-align: center;"><img src="legend/', layer: layer_Ros_0},]},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
@@ -1409,7 +1511,7 @@ window.addEventListener("resize", fixMap);
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Tipo'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Times New Roman\', sans-serif;">' + layer.feature.properties['Tipo']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Flujos_ind_3'});
+            layer.bindTooltip((layer.feature.properties['Tipo'] !== null?String('<div style="color: #222; font-weight: 700; font-size: 10pt; font-family: \"Helvetica Neue", Arial, Helvetica\', sans-serif;">' + layer.feature.properties['Tipo']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Flujos_ind_3'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1422,7 +1524,7 @@ window.addEventListener("resize", fixMap);
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Tipo'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Times New Roman\', sans-serif;">' + layer.feature.properties['Tipo']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Flujos_bio_4'});
+            layer.bindTooltip((layer.feature.properties['Tipo'] !== null?String('<div style="color: #222; font-weight: 700; font-size: 10pt; font-family: \"Helvetica Neue", Arial, Helvetica\', sans-serif;">' + layer.feature.properties['Tipo']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Flujos_bio_4'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1435,7 +1537,7 @@ window.addEventListener("resize", fixMap);
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Tipo'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Times New Roman\', sans-serif;">' + layer.feature.properties['Tipo']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Flujos_con_5'});
+            layer.bindTooltip((layer.feature.properties['Tipo'] !== null?String('<div style="color: #222; font-weight: 700; font-size: 10pt; font-family: \"Helvetica Neue", Arial, Helvetica\', sans-serif;">' + layer.feature.properties['Tipo']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Flujos_con_5'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;

@@ -6,6 +6,8 @@
 }
 
 .leaflet-control-layers-list{
+  background: rgba(78, 210, 177, 0.05) !important;
+}
 	font: 13px / 1.7 "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
@@ -65,14 +67,16 @@
     cursor: pointer;
 }
 .leaflet-control-layers {
-  background: rgba(255, 255, 255, 0.95) !important;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  border: none !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15) !important;
+  background: rgba(20, 184, 166, 0.05) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15) !important;
   max-height: 320px;
   overflow-y: auto;
   backdrop-filter: blur(6px);
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(20, 184, 166, 0.25) !important;
 }
 
 /* títulos de grupo */
@@ -91,7 +95,7 @@
 
 /* hover limpio */
 .leaflet-layerstree-header:hover {
-  background: #f3f4f6;
+  background: #f0f3f2;
 }
 
 /* checkboxes alineados */
