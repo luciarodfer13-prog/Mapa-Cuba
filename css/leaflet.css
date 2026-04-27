@@ -659,3 +659,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		print-color-adjust: exact;
 		}
 	}
+/* Watermark */
+body::before {
+  content: "© 2026 Luciarodfer.MapaCuba";
+  position: fixed;
+  bottom: 10px;
+  right: 10px;;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  z-index: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
